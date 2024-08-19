@@ -5,6 +5,6 @@ spring:
   application:
     name: techblog
 
-#jwt:
-#  expiration_time:
-#  secret:
+jwt:
+  expiration_time: 86400000
+  secret: ${JWT_SECRET_KEY}
