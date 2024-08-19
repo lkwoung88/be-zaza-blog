@@ -1,6 +1,5 @@
 package zaza.techblog.global.auth.security.authentication;
 
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -13,11 +12,15 @@ import org.springframework.stereotype.Component;
 
 @Setter
 @Component
-@RequiredArgsConstructor
 public class BasicAuthenticationProvider implements AuthenticationProvider {
 
-    private final BasicMemberDetailsService userDetailsService;
+    private final BasicUserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
+
+    public BasicAuthenticationProvider(BasicUserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+        this.userDetailsService = userDetailsService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
