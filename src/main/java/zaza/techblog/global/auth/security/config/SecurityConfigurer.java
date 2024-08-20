@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import zaza.techblog.global.auth.jwt.JasonWebTokenUtils;
 import zaza.techblog.global.auth.security.authentication.LoginFilter;
 
 @Configuration
@@ -15,9 +16,12 @@ import zaza.techblog.global.auth.security.authentication.LoginFilter;
 public class SecurityConfigurer {
 
     private final AuthenticationConfiguration authenticationConfiguration;
+    private final JasonWebTokenUtils jasonWebTokenUtils;
 
-    public SecurityConfigurer(AuthenticationConfiguration authenticationConfiguration) {
+    public SecurityConfigurer(AuthenticationConfiguration authenticationConfiguration,
+                              JasonWebTokenUtils jasonWebTokenUtils) {
         this.authenticationConfiguration = authenticationConfiguration;
+        this.jasonWebTokenUtils = jasonWebTokenUtils;
     }
 
     @Bean
@@ -28,6 +32,8 @@ public class SecurityConfigurer {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+        LoginFilter loginFilter = new LoginFilter(authenticationManger(authenticationConfiguration), jasonWebTokenUtils);
+
         http.csrf((auth) -> auth.disable());
         http.formLogin((auth) -> auth.disable());
         http.httpBasic((auth)-> auth.disable());
@@ -35,7 +41,9 @@ public class SecurityConfigurer {
                 .requestMatchers("/login").permitAll()
                 .anyRequest().authenticated());
 
-        http.addFilterAt(new LoginFilter(authenticationManger(authenticationConfiguration)), UsernamePasswordAuthenticationFilter.class);
+//        http.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()));
+
+        http.addFilterAt(loginFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

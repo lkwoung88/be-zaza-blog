@@ -19,10 +19,10 @@ public class BasicUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-         Member member = memberRepository.findByIdAndStatus(id, "active").orElseThrow(
-                 () -> new UsernameNotFoundException("ID Not Found : " + id));
+         Member member = memberRepository.findByIdAndStatus(username, "active").orElseThrow(
+                 () -> new UsernameNotFoundException("ID Not Found : " + username));
 
         return new BasicUserDetails(member);
     }
