@@ -1,4 +1,21 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: techblog
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    url: ${DB_URL}
 
+jwt:
+  expiration_time: 86400000
+  secret: ${JWT_SECRET_KEY}

@@ -13,6 +13,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public BaseResponse exceptionHandler(Exception exception) {
         log.error(exception.getMessage(), exception);
-        return new BaseResponse(ResponseCode.FAIL);
+        return BaseResponse.ofError(ResponseCode.SERVER_ERROR);
     }
 }
