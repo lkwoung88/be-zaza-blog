@@ -1,4 +1,4 @@
-package zaza.techblog.global.auth.security.authentication;
+package zaza.techblog.global.auth.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -11,7 +11,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import zaza.techblog.global.auth.jwt.JasonWebTokenUtils;
+import zaza.techblog.global.utils.JasonWebTokenUtils;
+import zaza.techblog.global.auth.user.BasicUserDetails;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -22,8 +23,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
     private final JasonWebTokenUtils jasonWebTokenUtils;
 
-    public LoginFilter(AuthenticationManager authenticationManager,
-                       JasonWebTokenUtils jasonWebTokenUtils) {
+    public LoginFilter(AuthenticationManager authenticationManager, JasonWebTokenUtils jasonWebTokenUtils) {
         this.authenticationManager = authenticationManager;
         this.jasonWebTokenUtils = jasonWebTokenUtils;
     }

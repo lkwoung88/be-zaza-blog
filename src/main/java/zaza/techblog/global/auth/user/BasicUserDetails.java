@@ -1,19 +1,18 @@
-package zaza.techblog.global.auth.security.authentication;
+package zaza.techblog.global.auth.user;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import zaza.techblog.domain.member.entity.Member;
+import zaza.techblog.global.common.member.dto.MemberDto;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class BasicUserDetails implements UserDetails {
 
-    private Member member;
+    private MemberDto memberDto;
 
-    public BasicUserDetails(Member member) {
-        this.member = member;
+    public BasicUserDetails(MemberDto memberDto) {
+        this.memberDto = memberDto;
     }
 
     @Override
@@ -22,7 +21,7 @@ public class BasicUserDetails implements UserDetails {
         authorities.add(new GrantedAuthority() {
             @Override
             public String getAuthority() {
-                return member.getRole();
+                return memberDto.getRole();
             }
         });
         return authorities;
@@ -30,12 +29,12 @@ public class BasicUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return member.getPassword();
+        return memberDto.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return member.getId();
+        return memberDto.getId();
     }
 
     @Override

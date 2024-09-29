@@ -7,7 +7,7 @@ import org.springframework.lang.NonNull;
 import zaza.techblog.global.common.code.ResponseCode;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BaseResponse {
 
     private ResponseCode responseCode;

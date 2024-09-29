@@ -35,6 +35,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.security:spring-security-test'
 
+	// oauth2
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
 	// spring validation
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
@@ -49,7 +52,6 @@ dependencies {
 	// database
 //	runtimeOnly 'com.h2database:h2'
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.3'
-
 
 	// devtool
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

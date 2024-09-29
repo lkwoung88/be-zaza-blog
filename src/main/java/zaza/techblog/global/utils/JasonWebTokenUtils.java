@@ -1,4 +1,4 @@
-package zaza.techblog.global.auth.jwt;
+package zaza.techblog.global.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -20,8 +20,7 @@ public class JasonWebTokenUtils {
     private final SecretKey secretKey;
     private final long accessTokenExpireTime;
 
-    public JasonWebTokenUtils(@Value("${jwt.secret}") String secretKey,
-                              @Value("${jwt.expiration_time}")long accessTokenExpireTime) {
+    public JasonWebTokenUtils(@Value("${jwt.secret}") String secretKey, @Value("${jwt.expiration_time}")long accessTokenExpireTime) {
         this.secretKey = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8),Jwts.SIG.HS256.key().build().getAlgorithm());
         this.accessTokenExpireTime = accessTokenExpireTime;
     }

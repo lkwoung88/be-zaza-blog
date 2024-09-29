@@ -1,4 +1,4 @@
-package zaza.techblog.global.auth.encoder;
+package zaza.techblog.global.auth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
