@@ -7,6 +7,7 @@ import zaza.techblog.global.auth.dto.SocialOAuthResponse;
 import zaza.techblog.global.common.code.RoleCode;
 import zaza.techblog.global.common.code.StatusCode;
 import zaza.techblog.global.common.entity.DateEntity;
+import zaza.techblog.global.common.member.request.JoinMemberRequest;
 
 @Getter
 @Entity
@@ -54,6 +55,16 @@ public class Member extends DateEntity {
         this.role = RoleCode.ROLE_USER;
         this.status = StatusCode.ACTIVE;
         this.oAuthProvider = socialOAuthResponse.getProvider();
+    }
+
+    public Member(JoinMemberRequest joinRequest) {
+        this.id = joinRequest.getId();
+        this.password = joinRequest.getPassword();
+        this.name = joinRequest.getName();
+        this.email = joinRequest.getEmail();
+        this.role = RoleCode.ROLE_USER;
+        this.status = StatusCode.ACTIVE;
+        this.oAuthProvider = "";
     }
 
     public void updateMemberByOAuthResponse(Member member) {

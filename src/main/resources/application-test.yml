@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: techblog
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:zaza-test
+    username: sa
+    password:
+
+jwt:
+  expiration_time: 86400000
+  secret: ${JWT_SECRET_KEY}
+
+oauth:
+  naver:
+    id: ${NAVER_CLIENT_ID}
+    password: ${NAVER_CLIENT_PASSWORD}
+  google:
+    id: ${GOOGLE_CLIENT_ID}
+    password: ${GOOGLE_CLIENT_PASSWORD}
