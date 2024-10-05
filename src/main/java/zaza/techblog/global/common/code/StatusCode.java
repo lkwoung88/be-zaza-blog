@@ -20,7 +20,7 @@ public enum StatusCode {
     }
 
     @Nullable
-    public StatusCode of(@NonNull final String codename) {
+    public static StatusCode of(@NonNull final String codename) {
 
         codename.toLowerCase();
 
