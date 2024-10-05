@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import zaza.techblog.global.auth.user.BasicUserDetails;
+import zaza.techblog.global.common.code.StatusCode;
 import zaza.techblog.global.common.member.dto.MemberDto;
 import zaza.techblog.global.common.member.entity.Member;
 import zaza.techblog.global.common.member.repository.MemberRepository;
@@ -23,7 +24,8 @@ public class BasicUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Member member = memberRepository.findByIdAndStatus(username, "active").orElseThrow(() -> new UsernameNotFoundException("ID Not Found : " + username));
+        Member member = memberRepository.findByIdAndStatus(username, StatusCode.ACTIVE)
+                .orElseThrow(() -> new UsernameNotFoundException("ID Not Found : " + username));
 
         return new BasicUserDetails(MemberDto.of(member));
     }

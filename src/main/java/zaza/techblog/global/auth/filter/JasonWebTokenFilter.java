@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
+import zaza.techblog.global.common.code.RoleCode;
 import zaza.techblog.global.utils.JasonWebTokenUtils;
 import zaza.techblog.global.auth.user.SocialOAuth2User;
 import zaza.techblog.global.common.member.dto.MemberDto;
@@ -40,7 +41,7 @@ public class JasonWebTokenFilter extends OncePerRequestFilter {
 
         // TODO 유효기간 검사
         String username = jasonWebTokenUtils.getUsername(authorization);
-        String role = jasonWebTokenUtils.getRole(authorization);
+        RoleCode role = jasonWebTokenUtils.getRole(authorization);
 
         MemberDto memberDto = new MemberDto(username, role);
         SocialOAuth2User socialOAuth2User = new SocialOAuth2User(memberDto);

@@ -9,14 +9,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import zaza.techblog.global.utils.JasonWebTokenUtils;
 import zaza.techblog.global.auth.user.BasicUserDetails;
+import zaza.techblog.global.common.code.RoleCode;
+import zaza.techblog.global.utils.JasonWebTokenUtils;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
 
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -46,12 +44,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         BasicUserDetails userDetails = (BasicUserDetails) authentication.getPrincipal();
 
         String username = userDetails.getUsername();
-
-        Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
-        Iterator<? extends GrantedAuthority> iterator = authorities.iterator();
-        GrantedAuthority authority = iterator.next();
-
-        String role = authority.getAuthority();
+        RoleCode role = userDetails.getRole();
 
         String token = jasonWebTokenUtils.createJwt(username, role);
 

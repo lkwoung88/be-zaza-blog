@@ -2,6 +2,7 @@ package zaza.techblog.global.auth.user;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+import zaza.techblog.global.common.code.RoleCode;
 import zaza.techblog.global.common.member.dto.MemberDto;
 import zaza.techblog.global.common.member.entity.Member;
 
@@ -40,7 +41,7 @@ public class SocialOAuth2User implements OAuth2User {
         return memberDto.getId();
     }
 
-    public String getRole(){
+    public RoleCode getRole(){
         return memberDto.getRole();
     }
 }

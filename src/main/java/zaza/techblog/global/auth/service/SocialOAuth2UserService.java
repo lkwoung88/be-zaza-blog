@@ -10,6 +10,7 @@ import zaza.techblog.global.auth.dto.GoogleOAuthResponse;
 import zaza.techblog.global.auth.dto.NaverOAuthResponse;
 import zaza.techblog.global.auth.dto.SocialOAuthResponse;
 import zaza.techblog.global.auth.user.SocialOAuth2User;
+import zaza.techblog.global.common.code.StatusCode;
 import zaza.techblog.global.common.member.entity.Member;
 import zaza.techblog.global.common.member.repository.MemberRepository;
 
@@ -44,7 +45,7 @@ public class SocialOAuth2UserService extends DefaultOAuth2UserService {
         }
 
         String id = socialOAuthResponse.getProvider() + "-" + socialOAuthResponse.getProviderId();
-        Optional<Member> optionalMember = memberRepository.findByIdAndStatus(id, "active");
+        Optional<Member> optionalMember = memberRepository.findByIdAndStatus(id, StatusCode.ACTIVE);
 
         if (optionalMember.isPresent()) {
             Member member = optionalMember.get();

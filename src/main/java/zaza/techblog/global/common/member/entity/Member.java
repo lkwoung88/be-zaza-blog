@@ -1,33 +1,42 @@
 package zaza.techblog.global.common.member.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import zaza.techblog.global.auth.dto.SocialOAuthResponse;
+import zaza.techblog.global.common.code.RoleCode;
+import zaza.techblog.global.common.code.StatusCode;
 import zaza.techblog.global.common.entity.DateEntity;
 
 @Getter
 @Entity
 @Table(name = "t_cmn_member")
 public class Member extends DateEntity {
+
     @Id
     @GeneratedValue
     private long number;
+
     private String id;
+
     private String password;
+
     private String name;
+
     private String email;
-    private String role;
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    private RoleCode role;
+
+    @Enumerated(EnumType.STRING)
+    private StatusCode status;
+
     private String oAuthProvider;
 
     public Member() {}
 
     @Builder
-    public Member(long number, String id, String password, String name, String email, String role, String status, String oAuthProvider) {
+    public Member(long number, String id, String password, String name, String email, RoleCode role, StatusCode status, String oAuthProvider) {
         this.number = number;
         this.id = id;
         this.password = password;
@@ -42,8 +51,8 @@ public class Member extends DateEntity {
         this.name = socialOAuthResponse.getName();
         this.email = socialOAuthResponse.getEmail();
         this.id = socialOAuthResponse.getProvider() + "-" + socialOAuthResponse.getProviderId();
-        this.role = "user";
-        this.status = "active";
+        this.role = RoleCode.ROLE_USER;
+        this.status = StatusCode.ACTIVE;
         this.oAuthProvider = socialOAuthResponse.getProvider();
     }
 

@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import zaza.techblog.global.common.code.RoleCode;
+import zaza.techblog.global.common.code.StatusCode;
 import zaza.techblog.global.common.member.entity.Member;
 
 @Getter
@@ -13,12 +15,12 @@ public class MemberDto {
     private String password;
     private String name;
     private String email;
-    private String role;
-    private String status;
+    private RoleCode role;
+    private StatusCode status;
     private String oAuthProvider;
 
     @Builder
-    public MemberDto(String id, String password, String name, String email, String role, String status, String oAuthProvider) {
+    public MemberDto(String id, String password, String name, String email, RoleCode role, StatusCode status, String oAuthProvider) {
         this.id = id;
         this.password = password;
         this.name = name;
@@ -29,7 +31,7 @@ public class MemberDto {
     }
 
     @Builder
-    public MemberDto(String username, String role) {
+    public MemberDto(String username, RoleCode role) {
         this.id = username;
         this.role = role;
     }

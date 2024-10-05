@@ -7,6 +7,7 @@ import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import zaza.techblog.global.common.code.RoleCode;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -35,18 +36,19 @@ public class JasonWebTokenUtils {
         return getPayload(token).get("username", String.class);
     }
 
-    public String getRole(String token) {
-        return getPayload(token).get("role", String.class);
+    public RoleCode getRole(String token) {
+        String roleCodename = getPayload(token).get("role", String.class);
+        return RoleCode.of(roleCodename);
     }
 
     public Boolean isExpired(String token) {
         return getPayload(token).getExpiration().before(new Date());
     }
 
-    public String createJwt(String username, String role) {
+    public String createJwt(String username, RoleCode role) {
         return Jwts.builder()
                 .claim("username", username)
-                .claim("role", role)
+                .claim("role", role.getCodename())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + accessTokenExpireTime))
                 .signWith(secretKey)

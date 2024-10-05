@@ -2,6 +2,7 @@ package zaza.techblog.global.auth.user;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import zaza.techblog.global.common.code.RoleCode;
 import zaza.techblog.global.common.member.dto.MemberDto;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class BasicUserDetails implements UserDetails {
         authorities.add(new GrantedAuthority() {
             @Override
             public String getAuthority() {
-                return memberDto.getRole();
+                return memberDto.getRole().getCodename();
             }
         });
         return authorities;
@@ -55,5 +56,9 @@ public class BasicUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public RoleCode getRole() {
+        return memberDto.getRole();
     }
 }
