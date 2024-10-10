@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.2'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'org.asciidoctor.jvm.convert' version '4.0.3'
 }
 
 group = 'zaza'
@@ -17,6 +18,7 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	asciidoctorExt
 }
 
 repositories {
@@ -51,8 +53,9 @@ dependencies {
 	// devtool
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
-	// swagger
-	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.5.0'
+	// rest docs
+	asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 
 	// test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -64,4 +67,33 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+ext {
+	snippetsDir = file('build/generated-snippets')
+}
+
+test {
+	outputs.dir snippetsDir
+}
+
+asciidoctor {
+	inputs.dir snippetsDir
+	configurations 'asciidoctorExt'
+
+	sources {
+		include("**/index.adoc") // main index doc 만 html로 만들기 위함
+	}
+
+	baseDirFollowsSourceFile()
+
+	dependsOn test
+}
+
+bootJar {
+	from("${asciidoctor.outputDir}"){
+		into 'static/docs'
+	}
+
+	dependsOn asciidoctor
 }

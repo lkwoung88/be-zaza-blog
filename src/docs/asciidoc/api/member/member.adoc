@@ -1,0 +1,8 @@
+=== 신규 멤버 가입
+==== HTTP REQUEST
+include::{snippets}/member-join/http-request.adoc[]
+include::{snippets}/member-join/request-fields.adoc[]
+==== HTTP RESPONSE
+include::{snippets}/member-join/http-response.adoc[]
+include::{snippets}/member-join/response-fields.adoc[]
+---

@@ -11,8 +11,7 @@ import zaza.techblog.global.common.member.entity.Member;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @ActiveProfiles("test")
@@ -33,13 +32,13 @@ class MemberRepositoryTest {
         Optional<Member> savedMember = memberRepository.findByIdAndStatus(saveRequestMember.getId(), saveRequestMember.getStatus());
 
     // then
-        assertNotNull(savedMember);
-        assertEquals(saveRequestMember, savedMember.get());
+        assertThat(savedMember).isNotNull();
+        assertThat(saveRequestMember).isEqualTo(savedMember.get());
     }
 
     /* ******************** test utils ******************** */
 
-    private static Member createMember() {
+    private Member createMember() {
         return Member.builder()
                 .id("minsuck")
                 .email("minsuck@test.com")

@@ -18,7 +18,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PutMapping("/join")
+    @PostMapping("/join")
     public ResponseEntity<BaseResponse> joinZazaMember(@RequestBody @Valid JoinMemberRequest request, BindingResult result) {
         BaseResponse response = memberService.joinZazaMember(request.toEntity());
         return ResponseEntity.ok(response);
