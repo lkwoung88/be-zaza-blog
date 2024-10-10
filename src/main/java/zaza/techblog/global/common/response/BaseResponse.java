@@ -11,9 +11,16 @@ import zaza.techblog.global.common.code.ResponseCode;
 public class BaseResponse {
 
     private ResponseCode responseCode;
+    private String detailMessage;
 
-    protected BaseResponse(@NonNull final ResponseCode responseCode) {
+    protected BaseResponse(ResponseCode responseCode) {
         this.responseCode = responseCode;
+        this.detailMessage = "";
+    }
+
+    protected BaseResponse(@NonNull final ResponseCode responseCode, final String detailMessage) {
+        this.responseCode = responseCode;
+        this.detailMessage = detailMessage;
     }
 
     public static BaseResponse ofSuccess() {
@@ -21,6 +28,10 @@ public class BaseResponse {
     }
 
     public static BaseResponse ofError(ResponseCode responseCode) {
-        return new BaseResponse(responseCode);
+        return new BaseResponse(responseCode, "");
+    }
+
+    public static BaseResponse ofError(ResponseCode responseCode, String detailMessage) {
+        return new BaseResponse(responseCode, detailMessage);
     }
 }
