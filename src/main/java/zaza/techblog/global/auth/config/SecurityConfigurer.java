@@ -12,8 +12,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import zaza.techblog.global.auth.filter.JasonWebTokenFilter;
 import zaza.techblog.global.auth.filter.LoginFilter;
-import zaza.techblog.global.auth.service.SocialOAuth2UserService;
 import zaza.techblog.global.auth.handler.SocialOAuthSuccessHandler;
+import zaza.techblog.global.auth.service.SocialOAuth2UserService;
 import zaza.techblog.global.utils.JasonWebTokenUtils;
 
 import java.util.Arrays;
@@ -54,7 +54,7 @@ public class SecurityConfigurer {
                 .successHandler(socialOAuthSuccessHandler));
 
         http.authorizeRequests((auth) -> auth
-                .requestMatchers("/**", "/login").permitAll()
+                .requestMatchers("/**", "/login", "/members/join").permitAll()
                 .anyRequest().authenticated());
 
         http.cors(auth -> auth.configurationSource(
@@ -70,7 +70,6 @@ public class SecurityConfigurer {
                 }));
 
         http.sessionManagement((auth) -> auth.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
 
         http.addFilterAt(loginFilter, UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(new JasonWebTokenFilter(jasonWebTokenUtils), UsernamePasswordAuthenticationFilter.class);

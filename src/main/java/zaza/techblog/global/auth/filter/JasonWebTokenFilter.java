@@ -26,7 +26,7 @@ public class JasonWebTokenFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authorization = null;
-        Cookie[] cookies = request.getCookies();
+        Cookie[] cookies = request.getCookies() == null ? new Cookie[0] : request.getCookies();
 
         for (Cookie cookie : cookies) {
             if(cookie.getName().equals("Authorization")) {

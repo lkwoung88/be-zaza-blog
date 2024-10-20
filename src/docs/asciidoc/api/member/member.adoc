@@ -1,8 +1,16 @@
-=== 신규 멤버 가입
+=== 회원가입
 ==== HTTP REQUEST
 include::{snippets}/member-join/http-request.adoc[]
 include::{snippets}/member-join/request-fields.adoc[]
 ==== HTTP RESPONSE
 include::{snippets}/member-join/http-response.adoc[]
 include::{snippets}/member-join/response-fields.adoc[]
+---
+=== 멤버조회
+==== HTTP REQUEST
+include::{snippets}/member-search/http-request.adoc[]
+include::{snippets}/member-search/query-parameters.adoc[]
+==== HTTP RESPONSE
+include::{snippets}/member-search/http-response.adoc[]
+include::{snippets}/member-search/response-fields.adoc[]
 ---
