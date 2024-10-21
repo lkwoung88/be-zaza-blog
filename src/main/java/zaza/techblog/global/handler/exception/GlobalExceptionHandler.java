@@ -6,7 +6,7 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import zaza.techblog.global.common.code.ResponseCode;
-import zaza.techblog.global.handler.response.type.BaseResponse;
+import zaza.techblog.global.common.response.BaseResponse;
 
 @Slf4j
 @RestControllerAdvice

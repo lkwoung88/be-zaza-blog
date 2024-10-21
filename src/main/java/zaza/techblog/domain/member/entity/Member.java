@@ -1,9 +1,9 @@
-package zaza.techblog.global.common.member.entity;
+package zaza.techblog.domain.member.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
-import zaza.techblog.global.auth.dto.SocialOAuthResponse;
+import zaza.techblog.global.auth.response.SocialOAuthResponse;
 import zaza.techblog.global.common.code.RoleCode;
 import zaza.techblog.global.common.code.StatusCode;
 import zaza.techblog.global.common.entity.DateEntity;

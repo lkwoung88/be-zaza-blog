@@ -1,4 +1,4 @@
-package zaza.techblog.global.handler.response.type;
+package zaza.techblog.global.common.response;
 
 import lombok.AccessLevel;
 import lombok.Getter;

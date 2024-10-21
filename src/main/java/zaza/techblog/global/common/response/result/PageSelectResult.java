@@ -1,4 +1,4 @@
-package zaza.techblog.global.common.result;
+package zaza.techblog.global.common.response.result;
 
 import lombok.Getter;
 

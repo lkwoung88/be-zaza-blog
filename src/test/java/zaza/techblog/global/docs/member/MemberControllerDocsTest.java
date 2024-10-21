@@ -4,12 +4,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
-import zaza.techblog.global.common.member.controller.MemberController;
-import zaza.techblog.global.common.member.entity.Member;
-import zaza.techblog.global.common.member.request.JoinMemberRequest;
-import zaza.techblog.global.common.member.service.MemberService;
+import zaza.techblog.domain.member.MemberController;
+import zaza.techblog.domain.member.entity.Member;
+import zaza.techblog.domain.member.request.JoinMemberRequest;
+import zaza.techblog.domain.member.MemberService;
 import zaza.techblog.global.common.request.PageSearchRequest;
-import zaza.techblog.global.common.result.PageSelectResult;
+import zaza.techblog.global.common.response.result.PageSelectResult;
 import zaza.techblog.global.docs.RestDocsSupport;
 
 import java.util.List;

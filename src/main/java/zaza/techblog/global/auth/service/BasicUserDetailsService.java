@@ -7,9 +7,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import zaza.techblog.global.auth.user.BasicUserDetails;
 import zaza.techblog.global.common.code.StatusCode;
-import zaza.techblog.global.common.member.dto.MemberDto;
-import zaza.techblog.global.common.member.entity.Member;
-import zaza.techblog.global.common.member.repository.MemberRepository;
+import zaza.techblog.domain.member.dto.MemberDto;
+import zaza.techblog.domain.member.entity.Member;
+import zaza.techblog.domain.member.MemberRepository;
 
 @Slf4j
 @Service
@@ -18,6 +18,7 @@ public class BasicUserDetailsService implements UserDetailsService {
     private final MemberRepository memberRepository;
 
     public BasicUserDetailsService(MemberRepository memberRepository) {
+
         this.memberRepository = memberRepository;
     }
 

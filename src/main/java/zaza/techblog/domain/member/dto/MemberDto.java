@@ -1,4 +1,4 @@
-package zaza.techblog.global.common.member.dto;
+package zaza.techblog.domain.member.dto;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import zaza.techblog.global.common.code.RoleCode;
 import zaza.techblog.global.common.code.StatusCode;
-import zaza.techblog.global.common.member.entity.Member;
+import zaza.techblog.domain.member.entity.Member;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)

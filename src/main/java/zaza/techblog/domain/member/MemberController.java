@@ -1,15 +1,14 @@
-package zaza.techblog.global.common.member.controller;
+package zaza.techblog.domain.member;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import zaza.techblog.global.common.member.request.JoinMemberRequest;
-import zaza.techblog.global.common.member.service.MemberService;
+import zaza.techblog.domain.member.request.JoinMemberRequest;
 import zaza.techblog.global.common.request.PageSearchRequest;
-import zaza.techblog.global.handler.response.type.BaseResponse;
-import zaza.techblog.global.handler.response.type.DataResponse;
+import zaza.techblog.global.common.response.BaseResponse;
+import zaza.techblog.global.common.response.DataResponse;
 
 @Slf4j
 @RestController

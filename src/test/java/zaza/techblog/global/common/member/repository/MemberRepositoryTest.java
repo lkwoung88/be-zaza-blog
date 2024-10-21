@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ActiveProfiles;
+import zaza.techblog.domain.member.MemberRepository;
 import zaza.techblog.global.common.code.RoleCode;
 import zaza.techblog.global.common.code.StatusCode;
-import zaza.techblog.global.common.member.entity.Member;
+import zaza.techblog.domain.member.entity.Member;
 
 import java.util.Arrays;
 import java.util.List;

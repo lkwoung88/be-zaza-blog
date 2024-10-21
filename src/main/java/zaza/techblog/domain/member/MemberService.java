@@ -1,4 +1,4 @@
-package zaza.techblog.global.common.member.service;
+package zaza.techblog.domain.member;
 
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.DuplicateMappingException;
@@ -7,10 +7,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import zaza.techblog.global.common.member.entity.Member;
-import zaza.techblog.global.common.member.repository.MemberRepository;
+import zaza.techblog.domain.member.entity.Member;
 import zaza.techblog.global.common.request.PageSearchRequest;
-import zaza.techblog.global.common.result.PageSelectResult;
+import zaza.techblog.global.common.response.result.PageSelectResult;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package zaza.techblog.global.common.member.request;
+package zaza.techblog.domain.member.request;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import zaza.techblog.global.common.code.RoleCode;
 import zaza.techblog.global.common.code.StatusCode;
-import zaza.techblog.global.common.member.entity.Member;
+import zaza.techblog.domain.member.entity.Member;
 
 @Getter
 @NoArgsConstructor

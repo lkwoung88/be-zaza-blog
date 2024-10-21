@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
+import zaza.techblog.domain.member.MemberService;
 import zaza.techblog.global.common.code.RoleCode;
 import zaza.techblog.global.common.code.StatusCode;
-import zaza.techblog.global.common.member.entity.Member;
-import zaza.techblog.global.common.member.repository.MemberRepository;
+import zaza.techblog.domain.member.entity.Member;
+import zaza.techblog.domain.member.MemberRepository;
 import zaza.techblog.global.common.request.PageSearchRequest;
-import zaza.techblog.global.common.result.PageSelectResult;
+import zaza.techblog.global.common.response.result.PageSelectResult;
 
 import java.util.Arrays;
 import java.util.List;

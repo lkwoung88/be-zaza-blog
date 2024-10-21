@@ -11,7 +11,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import zaza.techblog.global.common.code.RoleCode;
 import zaza.techblog.global.utils.JasonWebTokenUtils;
 import zaza.techblog.global.auth.user.SocialOAuth2User;
-import zaza.techblog.global.common.member.dto.MemberDto;
+import zaza.techblog.domain.member.dto.MemberDto;
 
 import java.io.IOException;
 

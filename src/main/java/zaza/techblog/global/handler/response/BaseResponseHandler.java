@@ -9,7 +9,7 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-import zaza.techblog.global.handler.response.type.BaseResponse;
+import zaza.techblog.global.common.response.BaseResponse;
 
 @RestControllerAdvice
 public class BaseResponseHandler implements ResponseBodyAdvice<Object> {
@@ -25,6 +25,7 @@ public class BaseResponseHandler implements ResponseBodyAdvice<Object> {
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
 
         if(returnType.getMethod().getReturnType().equals(void.class)) {
+
             return ResponseEntity.ok(BaseResponse.ofSuccess());
         }
 

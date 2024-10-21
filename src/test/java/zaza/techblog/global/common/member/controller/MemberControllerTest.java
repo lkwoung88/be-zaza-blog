@@ -8,8 +8,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import zaza.techblog.global.common.member.request.JoinMemberRequest;
-import zaza.techblog.global.common.member.service.MemberService;
+import zaza.techblog.domain.member.MemberController;
+import zaza.techblog.domain.member.request.JoinMemberRequest;
+import zaza.techblog.domain.member.MemberService;
 import zaza.techblog.global.common.request.PageSearchRequest;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

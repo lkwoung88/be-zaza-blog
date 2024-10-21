@@ -9,7 +9,7 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-import zaza.techblog.global.handler.response.type.BaseResponse;
+import zaza.techblog.global.common.response.BaseResponse;
 
 @RestControllerAdvice
 public class DataResponseHandler implements ResponseBodyAdvice<Object> {
